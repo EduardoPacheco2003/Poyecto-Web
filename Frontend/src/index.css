@@ -1,0 +1,256 @@
+/* ------------------------------------- Resets:  --------------------------------------------------- */
+:root {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+/* Palette: https://coolors.co/040f16-bdb246-797d81-bf1a2f-f0eff4 */
+
+/* ------------------------------------- Utilities:  --------------------------------------------------- */
+/* @link https://utopia.fyi/grid/calculator?c=320,16,1.2,1200,18,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+:root {
+  --grid-max-width: 69.75rem;
+  --grid-gutter: var(--space-s-l, clamp(1rem, 0.4975rem + 2.5126vw, 2.25rem));
+}
+
+:root {
+  --step--2: clamp(0.6944rem, 0.6851rem + 0.0466vw, 0.72rem);
+  --step--1: clamp(0.8331rem, 0.8088rem + 0.1216vw, 0.9rem);
+  --step-0: clamp(1rem, 0.9545rem + 0.2273vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.125rem + 0.375vw, 1.4063rem);
+  --step-2: clamp(1.44rem, 1.3243rem + 0.5784vw, 1.7581rem);
+  --step-3: clamp(1.7281rem, 1.5574rem + 0.8534vw, 2.1975rem);
+  --step-4: clamp(2.0738rem, 1.829rem + 1.2239vw, 2.7469rem);
+  --step-5: clamp(2.4881rem, 2.1445rem + 1.7182vw, 3.4331rem);
+}
+
+:root {
+  --space-3xs: clamp(0.25rem, 0.2273rem + 0.1136vw, 0.3125rem);
+  --space-2xs: clamp(0.5rem, 0.4773rem + 0.1136vw, 0.5625rem);
+  --space-xs: clamp(0.75rem, 0.7045rem + 0.2273vw, 0.875rem);
+  --space-s: clamp(1rem, 0.9545rem + 0.2273vw, 1.125rem);
+  --space-m: clamp(1.5rem, 1.4318rem + 0.3409vw, 1.6875rem);
+  --space-l: clamp(2rem, 1.9091rem + 0.4545vw, 2.25rem);
+  --space-xl: clamp(3rem, 2.8636rem + 0.6818vw, 3.375rem);
+  --space-2xl: clamp(4rem, 3.8182rem + 0.9091vw, 4.5rem);
+  --space-3xl: clamp(6rem, 5.7273rem + 1.3636vw, 6.75rem);
+
+  /* One-up pairs */
+  --space-3xs-2xs: clamp(0.25rem, 0.1364rem + 0.5682vw, 0.5625rem);
+  --space-2xs-xs: clamp(0.5rem, 0.3636rem + 0.6818vw, 0.875rem);
+  --space-xs-s: clamp(0.75rem, 0.6136rem + 0.6818vw, 1.125rem);
+  --space-s-m: clamp(1rem, 0.75rem + 1.25vw, 1.6875rem);
+  --space-m-l: clamp(1.5rem, 1.2273rem + 1.3636vw, 2.25rem);
+  --space-l-xl: clamp(2rem, 1.5rem + 2.5vw, 3.375rem);
+  --space-xl-2xl: clamp(3rem, 2.4545rem + 2.7273vw, 4.5rem);
+  --space-2xl-3xl: clamp(4rem, 3rem + 5vw, 6.75rem);
+
+  /* Custom pairs */
+  --space-s-l: clamp(1rem, 0.5455rem + 2.2727vw, 2.25rem);
+}
+
+.u-container {
+  max-width: var(--grid-max-width);
+  padding-inline: var(--grid-gutter);
+  margin-inline: auto;
+}
+
+.dark {
+  background-color: #040f16;
+  color: #f0eff4;
+}
+
+.header .active-link {
+  color: #bdb246;
+  background-color: #797d81;
+}
+
+.vh-100 {
+  min-height: 100vh;
+}
+
+/* ------------------------------------- Components:  --------------------------------------------------- */
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #0e1116;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.header h3 {
+  margin: 3rem 0 0 0;
+  padding: var(--space-xs);
+  text-align: center;
+}
+
+.header h3 a {
+  text-decoration: none;
+  color: #f0eff4;
+  text-decoration: none;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.header-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-xs);
+}
+
+.header-nav a {
+  color: #f0eff4;
+  text-decoration: none;
+  text-align: center;
+  padding: var(--space-2xs) var(--space-xs);
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.header-nav a:hover {
+  color: #040f16;
+  background-color: #bdb246;
+}
+
+.nav-auth {
+  background-color: #bf1a2f;
+  margin: 1rem;
+  border-radius: 1rem;
+}
+
+.header.open {
+  transform: translateX(0);
+}
+
+.hamburger-inner,
+.hamburger-inner::after,
+.hamburger-inner::before {
+  background-color: #f0eff4 !important;
+}
+
+.panel-btn {
+  z-index: 999;
+  position: fixed;
+  top: 1.5vh;
+  right: 1.5vw;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0e1116;
+}
+
+/* ------------------------------------- Site Styles:  --------------------------------------------------- */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form label {
+  display: block;
+}
+
+.form input {
+  width: 80%;
+  padding: var(--space-xs);
+  border-radius: 0.25rem;
+  border: 1px solid #797d81;
+  background-color: #f0eff4;
+  margin: var(--space-xs) 0;
+}
+
+.form input[type="submit"]:hover {
+  background-color: #bdb246;
+  color: #040f16;
+  cursor: pointer;
+}
+
+.form .error {
+  display: block;
+  color: tomato;
+  font-size: var(--step--1);
+  margin-top: -0.5rem;
+}
+
+/* Medium Size  768px*/
+@media screen and (min-width: 48em) {
+  /* ------------------------------------- Utilities:  --------------------------------------------------- */
+  /* ------------------------------------- Components:  --------------------------------------------------- */
+
+  .hamburger-inner,
+  .hamburger-inner::after,
+  .hamburger-inner::before,
+  .panel-btn {
+    display: none !important;
+  }
+
+  /*HEADER*/
+  .header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transform: translateX(0);
+    box-shadow: 1px 0 0.5rem #dadada79;
+  }
+
+  .header h3 {
+    margin: 0;
+  }
+
+  .header-nav {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0 var(--space-xs);
+    padding: 0 var(--space-xs);
+  }
+
+  .nav-auth {
+    margin: 0;
+    padding: var(--space-3xs) var(--space-xs);
+  }
+
+  /* ------------------------------------- Site Styles:  --------------------------------------------------- */
+}
+
+/* Large Size  992px*/
+@media screen and (min-width: 62em) {
+  /* ------------------------------------- Utilities:  --------------------------------------------------- */
+  /* ------------------------------------- Components:  --------------------------------------------------- */
+
+  /* ------------------------------------- Site Styles:  --------------------------------------------------- */
+}
+
+/* XL Size 1200px */
+
+@media screen and (min-width: 75em) {
+  /* ------------------------------------- Utilities:  --------------------------------------------------- */
+  /* ------------------------------------- Components:  --------------------------------------------------- */
+  /* ------------------------------------- Site Styles:  --------------------------------------------------- */
+}
