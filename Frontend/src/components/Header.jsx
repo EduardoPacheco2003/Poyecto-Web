@@ -52,6 +52,14 @@ const Header = () => {
             to={"/acerca-de"}>
             Acerca de
           </NavLink>
+          {auth && (
+            <NavLink
+              className={({ isActive }) => (isActive ? "active-link" : null)}
+              onClick={openMenu}
+              to={"/carrito"}>
+              Carrito
+            </NavLink>
+          )}
         </nav>
         <nav className="header-nav nav-auth" ref={loginMenu}>
           {!auth && (

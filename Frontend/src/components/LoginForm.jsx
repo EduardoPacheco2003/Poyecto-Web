@@ -17,13 +17,17 @@ const LoginForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      loginUser(data);
+      const resLogin = await loginUser(data);
+      console.log(resLogin);
+      if (resLogin.status !== 200) {
+        throw resLogin;
+      }
       navigate("/");
     } catch (error) {
       console.log(error);
       setFetchError({
         succes: false,
-        message: "Usuario o contraseña incorrectos",
+        message: "Correo o contraseña incorrectos",
       });
     }
   };

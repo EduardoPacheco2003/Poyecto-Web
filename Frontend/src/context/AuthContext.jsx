@@ -11,7 +11,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(initialUserValues);
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(null);
 
   // Try to log on PageLoad
   useEffect(() => {
@@ -53,7 +53,7 @@ export const AuthProvider = ({ children }) => {
 
       setUser(responseUser.data);
       setAuth(true);
-      return response.data;
+      return response;
     } catch (error) {
       return error;
     }

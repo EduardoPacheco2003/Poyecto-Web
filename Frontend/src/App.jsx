@@ -9,6 +9,7 @@ import DashBoard from "./pages/DashBoardPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
+import ShoppingCartPage from "./pages/ShoppingCartPage";
 
 function App() {
   const { auth } = useContext(AuthContext);
@@ -18,6 +19,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<MainPage />} />
+
           <Route path="/servicios" element={<ServicesPage />} />
           {/* Protegidas si estas logeado: */}
           <Route element={<ProtectedRoute isAllowed={!auth} />}>
@@ -27,8 +29,9 @@ function App() {
           {/* Rutas Protegidas: */}
           <Route element={<ProtectedRoute isAllowed={auth} />}>
             <Route path="/dashboard" element={<DashBoard />} />
+            <Route path="/carrito" element={<ShoppingCartPage />} />
           </Route>
-          <Route path="/*" element={<NotFoundPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </>
