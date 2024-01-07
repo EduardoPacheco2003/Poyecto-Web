@@ -1,14 +1,8 @@
-DELIMITER //
-USE proyecto_web;
-CREATE PROCEDURE sp_RegistrarUsuario(
-    IN p_Username VARCHAR(12),
-    IN p_Password VARCHAR(300),
-    IN p_Nombre VARCHAR(30),
-    IN p_Apellidos VARCHAR(50),
-    IN p_Correo VARCHAR(60)
+CREATE PROCEDURE sp_EliminarServicio(
+  IN v_Id_Servicio INT
 )
 BEGIN
-    DECLARE exito INT DEFAULT 0;
+  DECLARE exito INT DEFAULT 0;
     DECLARE done INT DEFAULT 0;
     DECLARE error_message VARCHAR(255);
 
@@ -21,21 +15,17 @@ BEGIN
         SELECT 'Error durante la transacción. Rollback realizado.' as Mensaje, error_message AS ErrorSQL, exito;
         SET done = 1;
     END;
-
     -- Iniciar la transacción
     START TRANSACTION;
-
-    -- Insertar datos en la tabla Usuarios
-    INSERT INTO Usuarios (Username, Password, Nombre, Apellidos, Correo, Id_Rol)
-    VALUES (p_Username, p_Password, p_Nombre, p_Apellidos, p_Correo, 1);
-
+    
+    DELETE FROM servicios
+    WHERE servicios.Id = v_Id_Servicio;
+  
     -- Confirmar la transacción si no hay errores
     IF done = 0 THEN
         COMMIT;
         SET exito = 1;
-        SELECT 'Usuario insertado exitosamente.' AS Mensaje, exito;
+        SELECT 'Servicio Eliminado exitosamente.' AS mensaje, exito;
     END IF;
-END//
-
-DELIMITER ;
-
+  
+END

@@ -15,8 +15,8 @@ export const getAuth = async (req, res) => {
       return res.status(401).json({ message: "Token no válido" });
     }
     // console.log(decoded);
-    const { id, username, email } = decoded;
-    return res.json({ id, username, email });
+    const { id, username, email, userRole } = decoded;
+    return res.json({ id, username, email, userRole: [userRole] });
   });
 };
 
@@ -25,7 +25,7 @@ export const postAuth = async (req, res) => {
     const { email, password } = req.body;
     //Verificar si el usuario existe
     const [rows] = await pool.query(
-      "SELECT id, username, correo, password FROM Usuarios WHERE correo = ?",
+      "SELECT u.id, u.username, u.correo, u.password, r.nombre_Rol FROM Usuarios u JOIN roles r ON u.Id_rol = r.ID WHERE correo = ?",
       [email]
     );
     //Si no existe el usuario
@@ -37,7 +37,14 @@ export const postAuth = async (req, res) => {
       };
       throw error;
     }
-    const { id, username, correo, password: hashedPassword } = rows[0];
+    console.log(rows[0]);
+    const {
+      id,
+      username,
+      correo,
+      password: hashedPassword,
+      nombre_Rol: userRole,
+    } = rows[0];
 
     //Si existe el usuario, verificar la contraseña
     const matchPassword = await bcrypt.compare(password, hashedPassword);
@@ -57,6 +64,7 @@ export const postAuth = async (req, res) => {
         id,
         username,
         email: correo,
+        userRole,
         exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 7, // 1 week
       },
       config.jwtSecret

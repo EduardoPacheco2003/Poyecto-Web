@@ -24,7 +24,7 @@ const ShoppingCartCard = ({ servicio }) => {
   return (
     <article className="shopping-card ">
       <h3>{servicio.Nombre}</h3>
-      <img src={servicio.Nombre} alt={servicio.Imagen} />
+      <img src={servicio.Imagen} alt={servicio.Nombre} />
       <p>{servicio.Categoria}</p>
       <p>{servicio.Descripcion}</p>
       <p>{`Precio: $${servicio.Costo}`}</p>

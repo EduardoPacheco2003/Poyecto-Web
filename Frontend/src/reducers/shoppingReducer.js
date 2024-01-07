@@ -67,9 +67,12 @@ export const shoppingReducer = (state, action) => {
     case TYPES.CLEAR_CART:
       return shoppingInitialState;
     case TYPES.LOAD_SERVICES: {
+      const avalibleServices = action.payload.filter(
+        (service) => service.Disponible === true
+      );
       return {
         ...state,
-        services: [...action.payload],
+        services: [...avalibleServices],
       };
     }
 

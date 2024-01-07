@@ -87,6 +87,18 @@ iframe {
   min-height: 100vh;
 }
 
+.vh-80 {
+  min-height: 80vh;
+}
+
+.rounded-5 {
+  border-radius: 0.5rem;
+}
+
+.margin-y-2 {
+  margin: var(--space-m) 0;
+}
+
 /* ------------------------------------- Components:  --------------------------------------------------- */
 
 .header {
@@ -176,13 +188,15 @@ iframe {
   display: block;
 }
 
-.form input {
+.form input,
+textarea {
   width: 80%;
   padding: var(--space-xs);
   border-radius: 0.25rem;
   border: 1px solid #797d81;
   background-color: #f0eff4;
   margin: var(--space-xs) 0;
+  resize: none;
 }
 
 .form input[type="submit"]:hover {
@@ -236,6 +250,134 @@ iframe {
   margin: var(--space-xs) 0;
 }
 
+.services-by-customer {
+  padding: var(--space-xs);
+  background-color: var(--quaternary-color);
+  color: var(--secondary-color);
+  border-radius: var(--space-m);
+}
+
+.pending-sale {
+  padding: var(--space-xs);
+  margin-bottom: var(--space-xs);
+  background-color: var(--quaternary-color);
+  color: var(--secondary-color);
+  border-radius: var(--space-m);
+}
+
+.add-service {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: var(--space-xs);
+  padding: var(--space-xs);
+  background-color: var(--quaternary-color);
+  color: var(--secondary-color);
+  border-radius: var(--space-m);
+}
+
+.add-service a {
+  text-decoration: none;
+  padding: var(--space-xs);
+  font-size: var(--step-0);
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease-in-out, color 0.1s ease-in-out;
+}
+
+.add-service a:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.edit-service-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: var(--space-xs);
+}
+
+.edit-service-nav button {
+  padding: var(--space-xs);
+  font-size: var(--step-0);
+  border-radius: var(--space-2xs);
+  border: none;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  transition: all 0.1s ease-in-out;
+}
+
+.edit-service-nav button:hover {
+  background-color: var(--tertiary-color);
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.edit-service-nav button:active {
+  background-color: var(--tertiary-color);
+  color: var(--quaternary-color);
+  outline: 3px solid var(--secondary-color);
+}
+
+.edit-service-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: var(--quinary-color);
+}
+
+.edit-service-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex-basis: 50%;
+  padding: var(--space-2xs);
+  font-size: var(--step--1);
+  background-color: var(--quinary-color);
+}
+
+.edit-service-info p,
+h4 {
+  margin: var(--space-2xs) 0;
+}
+
+.edit-service-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--space-2xs);
+}
+
+.edit-service-buttons button {
+  margin-top: var(--space-2xs);
+  padding: var(--space-3xs);
+  font-size: var(--step-0);
+  border-radius: var(--space-2xs);
+  border: none;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  transition: all 0.1s ease-in-out;
+}
+
+.edit-service-buttons button:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  outline: 1px solid var(--secondary-color);
+  cursor: pointer;
+}
+
+.edit-service-buttons button:active {
+  background-color: var(--primary-color);
+  color: var(--quaternary-color);
+  outline: 3px solid var(--secondary-color);
+}
+
 /* Medium Size  768px*/
 @media screen and (min-width: 48em) {
   /* ------------------------------------- Utilities:  --------------------------------------------------- */
@@ -280,6 +422,9 @@ iframe {
   }
 
   /* ------------------------------------- Site Styles:  --------------------------------------------------- */
+  .edit-service-info {
+    font-size: var(--step-0);
+  }
 }
 
 /* Large Size  992px*/

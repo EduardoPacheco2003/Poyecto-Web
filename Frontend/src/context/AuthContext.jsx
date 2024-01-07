@@ -5,6 +5,7 @@ const initialUserValues = {
   id: null,
   username: "",
   email: "",
+  userRole: [],
 };
 
 export const AuthContext = createContext();
@@ -37,7 +38,7 @@ export const AuthProvider = ({ children }) => {
       fetchUser();
     }
     // console.log(user);
-  }, []);
+  }, [auth]);
 
   const loginUser = async (data) => {
     try {

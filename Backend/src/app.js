@@ -6,6 +6,7 @@ import servicesRoutes from "./routes/services.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import registerRoutes from "./routes/register.routes.js";
 import logoutRoutes from "./routes/logout.routes.js";
+import salesRoutes from "./routes/sales.routes.js";
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use("/api", servicesRoutes);
 app.use("/api", authRoutes);
 app.use("/api", registerRoutes);
 app.use("/api", logoutRoutes);
+app.use("/api", salesRoutes);
 
 //404 handler
 app.use("*", (req, res) => {

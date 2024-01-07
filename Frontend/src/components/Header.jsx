@@ -8,7 +8,8 @@ const Header = () => {
   const loginMenu = useRef(null);
   const header = useRef(null);
   const hamburgerButton = useRef(null);
-  const { auth, logoutUser } = useContext(AuthContext);
+  const { auth, logoutUser, user } = useContext(AuthContext);
+  const { userRole } = user;
 
   const openMenu = () => {
     if (hamburgerButton.current) {
@@ -84,6 +85,14 @@ const Header = () => {
               onClick={openMenu}
               to={"dashboard"}>
               Perfil
+            </NavLink>
+          )}
+          {auth && userRole.includes("Admin") && (
+            <NavLink
+              className={({ isActive }) => (isActive ? "active-link" : null)}
+              onClick={openMenu}
+              to={"admin"}>
+              Admin
             </NavLink>
           )}
           {auth && (

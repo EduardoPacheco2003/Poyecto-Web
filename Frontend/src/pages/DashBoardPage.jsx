@@ -1,20 +1,13 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import ProfileInfo from "../components/DashBoardComponents/ProfileInfo";
+import ServicesBought from "../components/DashBoardComponents/ServicesBought";
 
 const DashBoardPage = () => {
-  const { user, logoutUser } = useContext(AuthContext);
-
-  const logout = async () => {
-    await logoutUser();
-  };
-
   return (
-    <main>
+    <main className="u-container">
       <h1>Panel de Perfil</h1>
-      <pre>
-        <code>{JSON.stringify(user, null, 2)}</code>
-      </pre>
-      <button onClick={logout}>Logout</button>
+      <ProfileInfo />
+      <ServicesBought />
     </main>
   );
 };
